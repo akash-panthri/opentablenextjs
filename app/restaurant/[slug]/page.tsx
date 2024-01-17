@@ -1,7 +1,7 @@
 
 import React from "react";
+import type { Metadata } from 'next'
 
-import Header from "./components/Header";
 import RestaurantNavBar from "./components/RestaurantNavBar";
 import Title from "./components/Title";
 import Rating from "./components/Rating";
@@ -10,7 +10,10 @@ import Images from "./components/Images";
 import Reviews from "./components/Reviews";
 import ReservationCard from "./components/ReservationCard";
 
-
+export const metadata: Metadata = {
+  title: 'Restaurant',
+  description: 'Restaurant',
+} 
 export default function RestaurantDetails() {
     return (
   <>
