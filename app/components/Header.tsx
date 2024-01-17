@@ -1,14 +1,10 @@
-"use client"
 
-
-import {useRouter} from 'next/navigation'
-import React, { useState } from 'react'
+import SearchBar from './SearchBar';
 
 
 export default function Header() {
 
-    const router = useRouter();
-  const [location,setLocation ] = useState('')
+   
     return (
     <>
      {/* HEADER */}
@@ -18,23 +14,7 @@ export default function Header() {
             Find your table for any occasion
           </h1>
           {/* SEARCH BAR */}
-          <div className="text-left text-lg py-3 m-auto flex justify-center">
-            <input
-              className="rounded  mr-3 p-2 w-[450px]"
-              type="text"
-              placeholder="State, city or town"
-              value={location}
-              onChange={(e)=>{
-                setLocation(e.target.value)
-              }}
-            />
-            <button className="rounded bg-red-600 px-9 py-2 text-white" onClick={()=>{
-              if(location ==="ba") return;
-              router.push('/search')
-            }}>
-              Let&apos;s go
-            </button>
-          </div>
+          <SearchBar />
           {/* SEARCH BAR */}
         </div>
       </div>
