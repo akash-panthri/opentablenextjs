@@ -14,7 +14,7 @@ model Restaurant {
   id          Int      @id @default(autoincrement())
   name        String
   main_image  String
-  images      String
+  images      String[]
   description String
   open_time   String
   close_time  String
