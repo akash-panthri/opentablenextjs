@@ -31,14 +31,25 @@ const fetchRestaurantByCity =async (city:string)=>{
     
 }
  export default async function Search({searchParams}:{searchParams:{city:string}}) {
-   const restaurant = await fetchRestaurantByCity(searchParams.city)
+   const restaurants = await fetchRestaurantByCity(searchParams.city)
     return (
        <>
   <Header />
     <div className="flex py-4 m-auto w-2/3 justify-between items-start"> 
   <SearchSideBar />
-      <div className="w-5/6">    
-     <SearchRestaurantCard />   
+      <div className="w-5/6"> 
+      {restaurants.length ? 
+      (
+         <>
+         {restaurants.map(restaurant=>(
+
+            <SearchRestaurantCard key={restaurant.id} restaurant={restaurant} />   
+         )
+            
+            )}
+         </>
+):(<p>Sorry, we found no Restaurant in this area</p>)
+      }   
       </div>
     </div>
 
