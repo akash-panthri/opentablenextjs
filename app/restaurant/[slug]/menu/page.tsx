@@ -12,7 +12,7 @@ export default function RestaurantMenu() {
 
       <div className="bg-white w-[100%] rounded p-3 shadow">
         {/* RESAURANT NAVBAR */}
-        <RestaurantNavBar />
+        <RestaurantNavBar slug="" />
         {/* RESAURANT NAVBAR */} {/* MENU */}
        <Menu />
         {/* MENU */}
