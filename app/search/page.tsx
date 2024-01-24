@@ -14,6 +14,7 @@ const select = {
   cuisine: true,
   location: true,
   slug: true,
+  reviews:true
 };
 const fetchRestaurantByCity = async (searchParams: SearchParams) => {
   const where :any = {}
