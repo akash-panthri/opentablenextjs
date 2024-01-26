@@ -6,13 +6,13 @@ import Image from "next/image"
 import { Review } from '@prisma/client'
 import calculateReviewRatingAverage from '../../utils/calculateReviewRatingAverage'
 
-function Stars({reviews}:{reviews:Review[]}) {
-    const rating = calculateReviewRatingAverage(reviews)
+function Stars({reviews, rating}:{reviews:Review[], rating?:number}) {
+    const reviewRating = rating || calculateReviewRatingAverage(reviews)
 
     const renderFunction =()=>{
         const stars =[];
         for(let i =0; i < 5; i++){
-const difference = parseFloat((rating - i).toFixed(1)) 
+const difference = parseFloat((reviewRating - i).toFixed(1)) 
 if(difference >= 0.6) stars.push(fullStar)
 else if (difference < 0.6 && difference > 0.2 ) stars.push(halfStar)
 else stars.push(emptyStar)

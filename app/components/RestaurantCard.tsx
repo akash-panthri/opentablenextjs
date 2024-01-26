@@ -2,6 +2,7 @@ import Link from "next/link";
 import { RestaurantCardType } from "../page";
 import Price from "./Price";
 import Stars from "./Stars";
+import Image from "next/image";
 
 
 interface Props {
