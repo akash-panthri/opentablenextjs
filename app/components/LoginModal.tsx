@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import AuthModalInputs from './AuthModalInput';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -43,12 +44,23 @@ return isSignin ? signinContent : signupContent;
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+         <div className="p-2" >
+            <div className='uppercase font-bold text-center pb-2 border-b mb-2'>
+<p className="text-sm" >
+{renderContent("Sign In", "Create Account")}
+</p>
+            </div>
+            <div className='m-auto'>
+            <h2 className="text-2xl font-light text-center">
+                  {renderContent(
+                    "Log Into Your Account",
+                    "Create Your OpenTable Account"
+                  )}
+                </h2>
+                <AuthModalInputs />
+
+            </div>
+         </div>
         </Box>
       </Modal>
     </div>
