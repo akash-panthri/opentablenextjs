@@ -71,7 +71,11 @@ export default function LoginModal({ isSignin }: { isSignin: boolean }) {
                   "Create Your OpenTable Account"
                 )}
               </h2>
-              <AuthModalInputs inputs={inputs} handleChangeInput={handleChangeInput} />
+              <AuthModalInputs
+                inputs={inputs}
+                handleChangeInput={handleChangeInput}
+                isSignin={isSignin}
+              />
               <button className="uppercase bg-red-600 w-full text-white p-3 rounded text-sm mb-5 disabled:bg-gray-400">
                 {renderContent("Sign In", "Create Account")}
               </button>

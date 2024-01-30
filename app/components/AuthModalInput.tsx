@@ -10,12 +10,13 @@ interface Props {
     password: string;
   };
   handleChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  isSignin: boolean;
 }
 
-export default function AuthModalInputs({inputs, handleChangeInput}:Props) {
+export default function AuthModalInputs({inputs, handleChangeInput,isSignin}:Props) {
   return (
     <div>
-     
+     {isSignin ? null : (
         <div className="my-3 flex justify-between text-sm">
           <input
             type="text"
@@ -34,6 +35,7 @@ export default function AuthModalInputs({inputs, handleChangeInput}:Props) {
             name="lastName"
           />
         </div>
+        )}
      
       <div className="my-3 flex justify-between text-sm">
         <input
@@ -45,7 +47,7 @@ export default function AuthModalInputs({inputs, handleChangeInput}:Props) {
             name="email"
         />
       </div>
-   
+      {isSignin ? null : (
         <div className="my-3 flex justify-between text-sm">
           <input
             type="text"
@@ -64,7 +66,8 @@ export default function AuthModalInputs({inputs, handleChangeInput}:Props) {
             name="city"
           />
         </div>
-    
+     )}
+     
       <div className="my-3 flex justify-between text-sm">
         <input
           type="password"
