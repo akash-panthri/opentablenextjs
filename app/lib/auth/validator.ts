@@ -1,4 +1,4 @@
-export function isPasswordStrength(password: string): boolean {
+export function isPasswordStrong(password: string): boolean {
     // Define criteria for password strength
     const minLength = 8;
     const hasUppercase = /[A-Z]/.test(password);
@@ -16,3 +16,11 @@ export function isPasswordStrength(password: string): boolean {
   
     return criteriaMet ;
   }
+
+  export function isValidEmail(email: string): boolean {
+    // Regular expression for basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+  
+  
