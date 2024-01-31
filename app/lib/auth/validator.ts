@@ -22,5 +22,12 @@ export function isPasswordStrong(password: string): boolean {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   }
+
+  
+ export function isValidPhoneNumber(phoneNumber: string): boolean {
+    // Regular expression for basic phone number validation
+    const phoneRegex = /^\d{10}$/;
+    return phoneRegex.test(phoneNumber);
+  }
   
   
