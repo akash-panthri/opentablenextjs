@@ -30,7 +30,7 @@ export function isPasswordStrong(password: string): boolean {
     return phoneRegex.test(phoneNumber);
   }
   
-  export function hasValidLength(str:String,minLength:number=1, maxLength:number=20):boolean{
-    const length = str.length;
+  export function hasValidLength(str:String,minLength:number=1, maxLength:number=2000):boolean{
+    const length = str?.length;
     return length >= minLength && length <= maxLength;
   }

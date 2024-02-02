@@ -73,9 +73,10 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse) {
    const alg = "HS256"
    const secret = new TextEncoder().encode(process.env.JWT_SECRET)
    const token = await new jose.SignJWT({email: (await user).email}).setProtectedHeader({alg}).setExpirationTime("24h").sign(secret);
-      res.status(200).json({
+      return res.status(200).json({
          hello:"message",
          cold:token
       });
    }
+   return res.status(404).json({message:"Unknown Endpoint"})
 }
