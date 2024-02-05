@@ -1,10 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import AuthModalInputs from "./AuthModalInput";
 import useAuth from "../../hooks/useAuth";
+import { AuthenticationContext } from "../context/AuthContext";
+import { CircularProgress } from "@mui/material";
 
 const style = {
   position: "absolute" as "absolute",
@@ -23,6 +25,7 @@ export default function LoginModal({ isSignin }: { isSignin: boolean }) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const { signin } = useAuth();
+  const { loading, data, error } = useContext(AuthenticationContext);
 
   const renderContent = (signinContent: String, signupContent: String) => {
     return isSignin ? signinContent : signupContent;
@@ -90,6 +93,11 @@ export default function LoginModal({ isSignin }: { isSignin: boolean }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
+          {loading ? (
+            <div className="py-24 px-2 h-[600px] flex justify-center">
+              <CircularProgress />
+            </div>
+          ) : (
           <div className="p-2 h-[600px]">
             <div className="uppercase font-bold text-center pb-2 border-b mb-2">
               <p className="text-sm">
@@ -116,7 +124,7 @@ export default function LoginModal({ isSignin }: { isSignin: boolean }) {
                 {renderContent("Sign In", "Create Account")}
               </button>
             </div>
-          </div>
+          </div>)}
         </Box>
       </Modal>
     </div>
