@@ -65,7 +65,7 @@ export default function LoginModal({ isSignin }: { isSignin: boolean }) {
         return setDisabled(false);
       }
     }
-
+   
     setDisabled(true);
   }, [inputs]);
 
