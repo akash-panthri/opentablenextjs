@@ -1,5 +1,5 @@
 "use client"
-
+import { partySizes } from "../../../../data/index";//would work fine witout specifying 'index' but i prefer it;
 import React from 'react'
 
 export default function ReservationCard() {
@@ -11,8 +11,9 @@ export default function ReservationCard() {
     <div className="my-3 flex flex-col">
       <label htmlFor="">Party size</label>
       <select name="" className="py-3 border-b font-light" id="">
-        <option value="">1 person</option>
-        <option value="">2 people</option>
+        {partySizes.map(partySize =>(
+          <option value={partySize.value} key={partySize.value}>{partySize.label}</option>
+        ))}
       </select>
     </div>
     <div className="flex justify-between">

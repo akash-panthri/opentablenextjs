@@ -5,7 +5,7 @@ import { deleteCookie } from "cookies-next";
 
 const useAuth = () => {
 
-  const {data ,error, loading, setAuthState}= useContext(AuthenticationContext)
+  const { setAuthState}= useContext(AuthenticationContext)
   const signin = async ({
     email,
     password,
