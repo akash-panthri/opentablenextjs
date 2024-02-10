@@ -1,8 +1,27 @@
 "use client"
-import { partySizes } from "../../../../data/index";//would work fine witout specifying 'index' but i prefer it;
+import { partySizes,times } from "../../../../data/index";//would work fine witout specifying 'index' but i prefer it;
 import React from 'react'
 
-export default function ReservationCard() {
+export default function ReservationCard({openTime, closeTime}:{openTime:string; closeTime:string}) {
+  const filterTimeByRestaurantOpenWindow = () => {
+    const timesWithinWindow: typeof times = [];
+
+    let isWithinWindow = false;
+
+    times.forEach((time) => {
+      if (time.time === openTime) {
+        isWithinWindow = true;
+      }
+      if (isWithinWindow) {
+        timesWithinWindow.push(time);
+      }
+      if (time.time === closeTime) {
+        isWithinWindow = false;
+      }
+    });
+
+    return timesWithinWindow;
+  };
   return (
     <div className="fixed w-[15%] bg-white rounded p-3 shadow">
     <div className="text-center border-b pb-2 font-bold">
@@ -24,8 +43,9 @@ export default function ReservationCard() {
       <div className="flex flex-col w-[48%]">
         <label htmlFor="">Time</label>
         <select name="" id="" className="py-3 border-b font-light">
-          <option value="">7:30 AM</option>
-          <option value="">9:30 AM</option>
+        {filterTimeByRestaurantOpenWindow().map(time =>(
+          <option value={time.time} key={time.time}>{time.displayTime}</option>
+        ))}
         </select>
       </div>
     </div>
