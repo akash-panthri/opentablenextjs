@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import NavBar from './components/NavBar'
+import "react-datepicker/dist/react-datepicker.css";
 import AuthContext from './context/AuthContext'
 
 const inter = Inter({ subsets: ['latin'] })
