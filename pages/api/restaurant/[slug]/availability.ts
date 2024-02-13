@@ -30,6 +30,21 @@ export default async function handler(
         errorMessage: "Invalid data provided",
       });
     }
+    const restaurant = await prisma.restaurant.findUnique({
+      where: {
+        slug,
+      },
+      select: {
+        tables: true,
+      },
+    });
+
+    if (!restaurant) {
+      return res.status(400).json({
+        errorMessage: "Invalid data provided",
+      });
+    }
+    const tables = restaurant.tables;
 
     const bookings = await prisma.booking.findMany({
       where: {
