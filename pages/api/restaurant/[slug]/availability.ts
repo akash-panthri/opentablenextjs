@@ -1,5 +1,7 @@
+import { PrismaClient } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
-
+import { times } from "../../../../data";
+const prisma = new PrismaClient();
 
 export default async function handler(
   req: NextApiRequest,
@@ -19,7 +21,17 @@ export default async function handler(
       });
     }
 
-    return res.json({slug, day, time, partySize});
+    const searchTimes = times.find((t) => {
+      return t.time === time;
+    })?.searchTimes;
+  
+    if (!searchTimes) {
+      return res.status(400).json({
+        errorMessage: "Invalid data provided",
+      });
+    }
+
+    return res.json({searchTimes});
   }
 }
 
