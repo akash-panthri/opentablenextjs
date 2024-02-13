@@ -71,7 +71,13 @@ export default async function handler(
           };
         }, {});
     });
-
+    const searchTimesWithTables = searchTimes.map((searchTime) => {
+      return {
+        date: new Date(`${day}T${searchTime}`),
+        time: searchTime,
+        tables,
+      };
+    });
 
     
     return res.json({searchTimes, bookings});
