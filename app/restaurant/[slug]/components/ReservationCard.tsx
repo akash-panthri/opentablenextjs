@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import useAvailabilities from "../../../../hooks/useAvailabilities";
 import { CircularProgress } from "@mui/material";
 import Link from "next/link";
+import { Time, convertToDisplayTime } from "../../../../utils/convertToDisplayTime";
 
 export default function ReservationCard({
   openTime,
@@ -125,11 +126,12 @@ export default function ReservationCard({
 
               return time.available ? (
                 <Link
+                key={time.time}
                   href={`/reserve/${slug}?date=${day}T${time.time}&partySize=${partySize}`}
                   className="bg-red-600 cursor-pointer p-2 w-24 text-center text-white mb-3 rounded mr-3"
                 >
                   <p className="text-sm font-bold">
-                    {time.time}
+                  {convertToDisplayTime(time.time as Time)}
                   </p>
                 </Link>
               ) : (
