@@ -138,7 +138,11 @@ export default async function handler(
       };
     });
 
-    return res.json(tablesToBooks);
+    await prisma.bookingsOnTables.createMany({
+      data: bookingsOnTablesData,
+    });
+
+    return res.json(booking);
   }
 }
 
