@@ -16,7 +16,14 @@ export default async function handler(
       time: string;
       partySize: string;
     };
-
+    const {
+      bookerEmail,
+      bookerPhone,
+      bookerFirstName,
+      bookerLastName,
+      bookerOccasion,
+      bookerRequest,
+    } = req.body;
 
     const restaurant = await prisma.restaurant.findUnique({
       where: {
@@ -109,6 +116,20 @@ export default async function handler(
         }
       }
     }
+
+    const booking = await prisma.booking.create({
+      data: {
+        number_of_people: parseInt(partySize),
+        booking_time: new Date(`${day}T${time}`),
+        booker_email: bookerEmail,
+        booker_phone: bookerPhone,
+        booker_first_name: bookerFirstName,
+        booker_last_name: bookerLastName,
+        booker_occasion: bookerOccasion,
+        booker_request: bookerRequest,
+        restaurant_id: restaurant.id,
+      },
+    });
 
     return res.json(tablesToBooks);
   }
