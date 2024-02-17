@@ -131,6 +131,13 @@ export default async function handler(
       },
     });
 
+    const bookingsOnTablesData = tablesToBooks.map((table_id) => {
+      return {
+        table_id,
+        booking_id: booking.id,
+      };
+    });
+
     return res.json(tablesToBooks);
   }
 }
