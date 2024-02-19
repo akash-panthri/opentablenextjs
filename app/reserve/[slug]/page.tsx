@@ -40,7 +40,9 @@ export default async function Reserve({
           partySize={searchParams.partySize}
         />
         {/* HEADER */} {/* FORM */}
-        <Form />
+        <Form partySize={searchParams.partySize}
+          slug={params.slug}
+          date={searchParams.date} />
       </div>
     </div>
   );

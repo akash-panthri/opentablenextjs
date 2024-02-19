@@ -1,8 +1,17 @@
 "use client";
 
 import React, { useEffect, useState } from 'react'
+import useReservation from '../../../../hooks/useReservation';
 
-export default function Form() {
+export default function Form({
+  slug,
+  date,
+  partySize,
+}: {
+  slug: string;
+  date: string;
+  partySize: string;
+}) {
   const [inputs, setInputs] = useState({
     bookerFirstName: "",
     bookerLastName: "",
@@ -20,6 +29,25 @@ export default function Form() {
   };
 
   const [disabled, setDisabled] = useState(true);
+  const { error, loading, createReservation } = useReservation();
+  const [day, time] = date.split("T");
+  const [didBook, setDidBook] = useState(false);
+
+  const handleClick = async () => {
+    const booking = await createReservation({
+      slug,
+      partySize,
+      time,
+      day,
+      bookerFirstName: inputs.bookerFirstName,
+      bookerLastName: inputs.bookerLastName,
+      bookerEmail: inputs.bookerEmail,
+      bookerOccasion: inputs.bookerOccasion,
+      bookerPhone: inputs.bookerPhone,
+      bookerRequest: inputs.bookerRequest,
+      setDidBook,
+    });
+  };
 
   useEffect(() => {
     if (
