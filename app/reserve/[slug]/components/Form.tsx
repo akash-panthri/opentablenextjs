@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 export default function Form() {
   const [inputs, setInputs] = useState({
@@ -18,6 +18,21 @@ export default function Form() {
       [e.target.name]: e.target.value,
     });
   };
+
+  const [disabled, setDisabled] = useState(true);
+
+  useEffect(() => {
+    if (
+      inputs.bookerFirstName &&
+      inputs.bookerLastName &&
+      inputs.bookerEmail &&
+      inputs.bookerPhone
+    ) {
+      return setDisabled(false);
+    }
+    return setDisabled(true);
+  }, [inputs]);
+
   return (
     <div className="mt-10 flex flex-wrap justify-between w-[660px]">
     <input
@@ -69,6 +84,7 @@ export default function Form() {
       onChange={handleChangeInput}
     />
     <button
+    disabled={disabled}
       className="bg-red-600 w-full p-3 text-white font-bold rounded disabled:bg-gray-300"
     >
       Complete reservation
