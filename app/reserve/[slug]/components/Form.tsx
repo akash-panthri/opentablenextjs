@@ -64,7 +64,14 @@ export default function Form({
 
   return (
     <div className="mt-10 flex flex-wrap justify-between w-[660px]">
-    <input
+    {didBook ? (
+        <div>
+          <h1>You are all booked up</h1>
+          <p>Enjoy your reservation</p>
+        </div>
+      ) : (
+      <>
+      <input
       type="text"
       className="border rounded p-3 w-80 mb-4"
       placeholder="First name"
@@ -127,6 +134,7 @@ export default function Form({
       of Use and Privacy Policy. Standard text message rates may apply.
       You may opt out of receiving text messages at any time.
     </p>
+    </>)}
   </div>
   )
 }
