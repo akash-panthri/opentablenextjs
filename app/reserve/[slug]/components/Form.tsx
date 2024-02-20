@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import useReservation from '../../../../hooks/useReservation';
+import { CircularProgress } from '@mui/material';
 
 export default function Form({
   slug,
@@ -112,10 +113,14 @@ export default function Form({
       onChange={handleChangeInput}
     />
     <button
-    disabled={disabled}
+    disabled={disabled || loading}
       className="bg-red-600 w-full p-3 text-white font-bold rounded disabled:bg-gray-300"
     >
-      Complete reservation
+     {loading ? (
+              <CircularProgress color="inherit" />
+            ) : (
+              "Complete reservation"
+            )}
     </button>
     <p className="mt-4 text-sm">
       By clicking “Complete reservation” you agree to the OpenTable Terms
