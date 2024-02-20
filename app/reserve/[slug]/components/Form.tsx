@@ -35,7 +35,7 @@ export default function Form({
   const [didBook, setDidBook] = useState(false);
 
   const handleClick = async () => {
-    const booking = await createReservation({
+    await createReservation({
       slug,
       partySize,
       time,
@@ -121,6 +121,7 @@ export default function Form({
     />
     <button
     disabled={disabled || loading}
+    onClick={handleClick}
       className="bg-red-600 w-full p-3 text-white font-bold rounded disabled:bg-gray-300"
     >
      {loading ? (
