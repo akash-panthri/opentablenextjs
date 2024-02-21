@@ -39,5 +39,9 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 There is seed.ts in extraForDB for putting data on Database if needed
 Just follow the steps:
+* open folder in terminal or powershell('shift + right click' would give option to open folder in powershell) or if using VS code ,use terminal in it.
+*run ```npm install -D typescript ts-node @types/node``` on terminal 
 * move file seed.ts from extraForDB to prisma directory 
-* run ```npx prisma migrate dev``` on terminal
+* run ```npx prisma migrate dev``` on terminal or ```npx prisma db push```
+* run ```npx prisma db seed``` on terminal
+* to see data on browser use ```npx prisma studio``` on terminal
