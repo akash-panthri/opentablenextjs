@@ -1,3 +1,8 @@
+
+
+https://github.com/akash-panthri/opentablenextjs/assets/150880382/5f7880a4-b54c-4a16-9d03-8591825e6a06
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
